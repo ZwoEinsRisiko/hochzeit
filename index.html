@@ -31,11 +31,11 @@
       z-index: -1;
     }
 
-    header {
-      background-color: rgba(191, 165, 106, 0.85); 
-      backdrop-filter: blur(4px);                 
-      -webkit-backdrop-filter: blur(4px);         
-      color: white;
+    header, footer {
+      background-color: rgba(216, 198, 173, 0.85);  /* Naturleinen als leicht transparente Fläche */
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: #333;  /* Wechsel ggf. zu dunkel für bessere Lesbarkeit */
       padding: 40px 20px;
       position: relative;
       z-index: 1;
@@ -57,7 +57,7 @@
 
     .btn {
       display: inline-block;
-      background-color: #c78283;
+      background-color: #CBB88A; /* stilvolle, etwas dunklere Begleitfarbe */
       color: white;
       padding: 15px 25px;
       margin: 15px;
@@ -70,7 +70,7 @@
     }
 
     .btn:hover {
-      background-color: #a96b6b;
+      background-color: #BFA56A;
     }
 
     .btn:focus {
@@ -111,18 +111,6 @@
       border: none;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       border-radius: 8px;
-    }
-
-    footer {
-      background-color: rgba(191, 165, 106, 0.85);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      color: white;
-      padding: 20px;
-      margin-top: 50px;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 -6px 15px rgba(0, 0, 0, 0.06); /* sanfter Schatten nach oben */
     }
 
     @media (max-width: 800px) {

@@ -135,15 +135,20 @@
     <p>Danke, dass du Teil unseres großen Tages bist! 💕</p>
   </footer>
 
-  <script>
-    const btn = document.getElementById('showTablesBtn');
-    const container = document.getElementById('tables-container');
+<script>
+  const btn = document.getElementById('showTablesBtn');
+  const container = document.getElementById('tables-container');
 
-    btn.addEventListener('click', () => {
-      container.style.display = 'flex';  // Tabellen sichtbar machen
-      btn.style.display = 'none';        // Button ausblenden, da nicht mehr nötig
-    });
-  </script>
+  btn.addEventListener('click', () => {
+    if (container.style.display === 'flex') {
+      container.style.display = 'none';
+      btn.textContent = 'Übersicht anzeigen';
+    } else {
+      container.style.display = 'flex';
+      btn.textContent = 'Übersicht ausblenden';
+    }
+  });
+</script>
 
 </body>
 </html>

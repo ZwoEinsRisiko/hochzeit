@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Unsere Hochzeit</title>
   <style>
     body {
@@ -42,35 +42,65 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
+      cursor: pointer;
       transition: background 0.3s ease;
+      border: none;
     }
 
     .btn:hover {
       background-color: #a96b6b;
     }
 
-    iframe {
-      width: 90%;
-      height: 500px;
-      border: none;
+    #tables-container {
+      display: none; /* Anfangs unsichtbar */
       margin-top: 30px;
       max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      text-align: left;
     }
-    
-    #sheet-container iframe {
-      width: 90%;
+
+    .table-wrapper {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .table-wrapper h3 {
+      margin-bottom: 10px;
+      color: #c78283;
+      text-align: center;
+    }
+
+    .table-wrapper iframe {
+      width: 100%;
       height: 500px;
       border: none;
-      margin-top: 30px;
-      max-width: 900px;
-      transition: opacity 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
     }
 
     footer {
       background: #e4c2c1;
       color: white;
       padding: 20px;
+      margin-top: 50px;
     }
+    
+    @media (max-width: 800px) {
+      #tables-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .table-wrapper {
+        width: 90%;
+        min-width: auto;
+      }
+    }
+    
   </style>
 </head>
 <body>
@@ -83,38 +113,39 @@
   <section>
     <h2>Sektempfang – Mitmachen</h2>
     <p>Du möchtest etwas zum Sektempfang beitragen? Trag dich gerne im Formular ein:</p>
-    <a href="DEIN_GOOGLE_FORMULAR_LINK" class="btn" target="_blank">Zum Anmeldeformular</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWb07nup7pTN0dlg6A00-0G-HkvuId1Ag1muahLqg9b2OnMQ/viewform" class="btn" target="_blank">Zum Anmeldeformular</a>
   </section>
 
-<section>
-  <h2>Übersicht – Wer bringt was mit?</h2>
-  <p>Wähle eine Übersicht aus:</p>
-  
-  <div>
-    <button class="btn" onclick="showSheet('sektempfang')">Sektempfang</button>
-    <button class="btn" onclick="showSheet('nachtisch')">Nachtisch</button>
-  </div>
+  <section>
+    <h2>Übersicht – Wer bringt was mit?</h2>
+    <p>Klicke auf den Button, um beide Übersichten anzuzeigen:</p>
+    <button class="btn" id="showTablesBtn">Übersichten anzeigen</button>
 
-  <div id="sheet-container">
-    <iframe id="nachtisch" src="https://script.google.com/macros/s/AKfycbwEKkYTwubKauVppL9180F4Rrd-27BxFpt-lnc7KchpYj6cpfN_dmpCMwMaveEJ-IV6/exec?sheet=Nachtisch" style="width: 100%; height: 500px; border: none;"></iframe>
-    <iframe id="sektempfang" src="https://script.google.com/macros/s/AKfycbwEKkYTwubKauVppL9180F4Rrd-27BxFpt-lnc7KchpYj6cpfN_dmpCMwMaveEJ-IV6/exec?sheet=Sektempfang" style="width: 100%; height: 500px; border: none;"></iframe>
-  </div>
-</section>
-
-<script>
-  function showSheet(id) {
-    // Alle iframes ausblenden
-    document.getElementById('sektempfang').style.display = 'none';
-    document.getElementById('nachtisch').style.display = 'none';
-
-    // Gewünschtes iframe anzeigen
-    document.getElementById(id).style.display = 'block';
-  }
-</script>
+    <div id="tables-container">
+      <div class="table-wrapper">
+        <h3>Sektempfang</h3>
+        <iframe src="https://script.google.com/macros/s/AKfycbwEKkYTwubKauVppL9180F4Rrd-27BxFpt-lnc7KchpYj6cpfN_dmpCMwMaveEJ-IV6/exec?sheet=Sektempfang" loading="lazy"></iframe>
+      </div>
+      <div class="table-wrapper">
+        <h3>Nachtisch</h3>
+        <iframe src="https://script.google.com/macros/s/AKfycbwEKkYTwubKauVppL9180F4Rrd-27BxFpt-lnc7KchpYj6cpfN_dmpCMwMaveEJ-IV6/exec?sheet=Nachtisch" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <p>Danke, dass du Teil unseres großen Tages bist! 💕</p>
   </footer>
+
+  <script>
+    const btn = document.getElementById('showTablesBtn');
+    const container = document.getElementById('tables-container');
+
+    btn.addEventListener('click', () => {
+      container.style.display = 'flex';  // Tabellen sichtbar machen
+      btn.style.display = 'none';        // Button ausblenden, da nicht mehr nötig
+    });
+  </script>
 
 </body>
 </html>

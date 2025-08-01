@@ -51,8 +51,13 @@
       background-color: #a96b6b;
     }
 
+    .btn:focus {
+      outline: 3px solid #a96b6b;
+      outline-offset: 2px;
+    }
+
     #tables-container {
-      display: none; /* Anfangs unsichtbar */
+      display: none;
       margin-top: 30px;
       max-width: 900px;
       margin-left: auto;
@@ -60,6 +65,11 @@
       gap: 20px;
       justify-content: center;
       text-align: left;
+      flex-wrap: wrap;
+    }
+
+    #tables-container.visible {
+      display: flex;
     }
 
     .table-wrapper {
@@ -87,19 +97,19 @@
       padding: 20px;
       margin-top: 50px;
     }
-    
+
     @media (max-width: 800px) {
       #tables-container {
         flex-direction: column;
         align-items: center;
       }
-    
+
       .table-wrapper {
         width: 90%;
         min-width: auto;
       }
     }
-    
+
   </style>
 </head>
 <body>
@@ -112,21 +122,21 @@
   <section>
     <h2>Sektempfang/Nachtisch – Mitmachen</h2>
     <p>Du möchtest etwas zum Sektempfang oder zum Nachtisch beitragen? Trag dich gerne im Formular ein:</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWb07nup7pTN0dlg6A00-0G-HkvuId1Ag1muahLqg9b2OnMQ/viewform" class="btn" target="_blank">Zum Anmeldeformular</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWb07nup7pTN0dlg6A00-0G-HkvuId1Ag1muahLqg9b2OnMQ/viewform" class="btn" target="_blank" rel="noopener noreferrer">Zum Anmeldeformular</a>
   </section>
 
   <section>
     <h2>Übersicht – Was wird schon mitgebracht?</h2>
-    <button class="btn" id="showTablesBtn">Übersicht anzeigen</button>
+    <button class="btn" id="showTablesBtn" aria-expanded="false">Übersicht anzeigen</button>
 
     <div id="tables-container">
       <div class="table-wrapper">
         <h3>Sektempfang</h3>
-        <iframe src="https://script.google.com/macros/s/AKfycbygx47-1-awHzZ2Pt4P91Qla8TftVec1nT253oXGuWo_fjNA01ijFamLrb5hiFlzW0E/exec?sheet=Sektempfang" loading="lazy"></iframe>
+        <iframe src="https://script.google.com/macros/s/AKfycbygx47-1-awHzZ2Pt4P91Qla8TftVec1nT253oXGuWo_fjNA01ijFamLrb5hiFlzW0E/exec?sheet=Sektempfang" loading="lazy" title="Sektempfang Übersicht"></iframe>
       </div>
       <div class="table-wrapper">
         <h3>Nachtisch</h3>
-        <iframe src="https://script.google.com/macros/s/AKfycbygx47-1-awHzZ2Pt4P91Qla8TftVec1nT253oXGuWo_fjNA01ijFamLrb5hiFlzW0E/exec?sheet=Nachtisch" loading="lazy"></iframe>
+        <iframe src="https://script.google.com/macros/s/AKfycbygx47-1-awHzZ2Pt4P91Qla8TftVec1nT253oXGuWo_fjNA01ijFamLrb5hiFlzW0E/exec?sheet=Nachtisch" loading="lazy" title="Nachtisch Übersicht"></iframe>
       </div>
     </div>
   </section>
@@ -140,13 +150,10 @@
   const container = document.getElementById('tables-container');
 
   btn.addEventListener('click', () => {
-    if (container.style.display === 'flex') {
-      container.style.display = 'none';
-      btn.textContent = 'Übersicht anzeigen';
-    } else {
-      container.style.display = 'flex';
-      btn.textContent = 'Übersicht ausblenden';
-    }
+    container.classList.toggle('visible');
+    const expanded = container.classList.contains('visible');
+    btn.textContent = expanded ? 'Übersicht ausblenden' : 'Übersicht anzeigen';
+    btn.setAttribute('aria-expanded', expanded);
   });
 </script>
 

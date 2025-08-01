@@ -56,6 +56,15 @@
       margin-top: 30px;
       max-width: 900px;
     }
+    
+    #sheet-container iframe {
+      width: 90%;
+      height: 500px;
+      border: none;
+      margin-top: 30px;
+      max-width: 900px;
+      transition: opacity 0.3s ease;
+    }
 
     footer {
       background: #e4c2c1;
@@ -77,11 +86,31 @@
     <a href="DEIN_GOOGLE_FORMULAR_LINK" class="btn" target="_blank">Zum Anmeldeformular</a>
   </section>
 
-  <section>
-    <h2>Übersicht – Wer bringt was mit?</h2>
-    <p>Hier findest du die aktuelle Übersicht:</p>
-    <iframe src="DEIN_GOOGLE_SHEET_EMBED_LINK"></iframe>
-  </section>
+<section>
+  <h2>Übersicht – Wer bringt was mit?</h2>
+  <p>Wähle eine Übersicht aus:</p>
+  
+  <div>
+    <button class="btn" onclick="showSheet('sektempfang')">Sektempfang</button>
+    <button class="btn" onclick="showSheet('nachtisch')">Nachtisch</button>
+  </div>
+
+  <div id="sheet-container">
+    <iframe id="sektempfang" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwTUdTn6ZUmqIhRcQq7AK-kPtMMNYwAuNK6aWXFQkhZIejSkzLiwQ_-c0GozNuliEZ_tjZW19qFS6L/pubhtml?gid=1248914800&single=true" style="display:none;"></iframe>
+    <iframe id="nachtisch" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwTUdTn6ZUmqIhRcQq7AK-kPtMMNYwAuNK6aWXFQkhZIejSkzLiwQ_-c0GozNuliEZ_tjZW19qFS6L/pubhtml?gid=1765663144&single=true" style="display:none;"></iframe>
+  </div>
+</section>
+
+<script>
+  function showSheet(id) {
+    // Alle iframes ausblenden
+    document.getElementById('sektempfang').style.display = 'none';
+    document.getElementById('nachtisch').style.display = 'none';
+
+    // Gewünschtes iframe anzeigen
+    document.getElementById(id).style.display = 'block';
+  }
+</script>
 
   <footer>
     <p>Danke, dass du Teil unseres großen Tages bist! 💕</p>

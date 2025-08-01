@@ -16,23 +16,24 @@
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
+      background-attachment: fixed; /* Hintergrund fixieren */
       position: relative;
     }
 
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.6);
-    z-index: -1;
-  }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.6);
+      z-index: -1;
+    }
 
     header {
-      background: #e4c2c1;
-      color: white;
+      background: #D9CFC7;
+      color: black;
       padding: 40px 20px;
     }
 
@@ -108,7 +109,7 @@
     }
 
     footer {
-      background: #e4c2c1;
+      background: #D9CFC7;
       color: white;
       padding: 20px;
       margin-top: 50px;
